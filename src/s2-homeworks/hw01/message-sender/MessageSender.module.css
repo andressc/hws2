@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     gap: 80px;
-    border-bottom: 1px solid #D9D9D9;
-    padding: 0 60px 35px 60px;
 }
 
 .textarea {
