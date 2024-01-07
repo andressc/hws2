@@ -1,3 +1,5 @@
 .loader {
-    /*свг и/или анимация*/
+    background-image: url("../../assets/spinner.svg");
+    width: 200px;
+    height: 200px;
 }
