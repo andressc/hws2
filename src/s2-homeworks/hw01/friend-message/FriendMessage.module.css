@@ -1,4 +1,5 @@
 .friendMessage {
+    color: #000;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -21,7 +22,6 @@
 
 .friendText {
     background-color: #F5F7FB;
-    color: #000;
     order: 2;
     padding: 6px 13px;
     border-radius: 10px 10px 10px 0;
