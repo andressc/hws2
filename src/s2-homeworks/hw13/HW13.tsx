@@ -19,7 +19,7 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
-    const [loading, setLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -31,7 +31,7 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
-        setLoading(true)
+        setIsLoading(true)
 
         axios
             .post(url, {success: x})
@@ -65,7 +65,7 @@ const HW13 = () => {
                     setInfo(e.name)
                 }
             })
-            .finally(() => setLoading(false))
+            .finally(() => setIsLoading(false))
     }
 
     return (
@@ -78,7 +78,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        disabled={loading}
+                        disabled={isLoading}
 
                     >
                         Send true
@@ -87,7 +87,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        disabled={loading}
+                        disabled={isLoading}
                     >
                         Send false
                     </SuperButton>
@@ -95,7 +95,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        disabled={loading}
+                        disabled={isLoading}
                     >
                         Send undefined
                     </SuperButton>
@@ -103,7 +103,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        disabled={loading}
+                        disabled={isLoading}
                     >
                         Send null
                     </SuperButton>
