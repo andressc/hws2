@@ -45,15 +45,15 @@ const HW13 = () => {
             })
             .catch((e) => {
                 if (e.code === "ERR_BAD_RESPONSE") {
-                    setCode('Ошибка 400!')
-                    setImage(error400)
+                    setCode('Ошибка 500!')
+                    setImage(error500)
                     setText(e.response.data.errorText)
                     setInfo(e.response.data.info)
                 }
 
                 if (e.code === "ERR_BAD_REQUEST") {
-                    setCode('Ошибка 500!')
-                    setImage(error500)
+                    setCode('Ошибка 400!')
+                    setImage(error400)
                     setText(e.response.data.errorText)
                     setInfo(e.response.data.info)
                 }
