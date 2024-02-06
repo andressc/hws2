@@ -6,7 +6,7 @@
 .hw {
     display: flex;
     flex-direction: column;
-    gap: 70px;
+
     padding: 25px 60px;
     border-bottom: 1px solid #D9D9D9;
     border-top: 1px solid #D9D9D9;
