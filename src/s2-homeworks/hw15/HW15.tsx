@@ -5,6 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import loading from '../../assets/spinner.svg'
 
 /*
 * 1 - дописать SuperPagination
@@ -51,36 +52,58 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+
+                if(res?.data) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
                 // делает студент
 
                 // сохранить пришедшие данные
 
                 //
             })
+            .finally(() => {setLoading(false)})
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
 
-        // setPage(
-        // setCount(
+        const paramsQuery = {
+            sort: "string",
+            page: newPage,
+            count: newCount,
+        }
 
-        // sendQuery(
-        // setSearchParams(
+        setPage(paramsQuery.page)
+        setCount(paramsQuery.count)
 
-        //
+        sendQuery(paramsQuery)
+        setSearchParams(params => {
+            params.set("sort", paramsQuery.sort);
+            params.set("page", paramsQuery.page.toString());
+            params.set("count", paramsQuery.count.toString());
+            return params;
+        })
     }
 
     const onChangeSort = (newSort: string) => {
-        // делает студент
+        const paramsQuery = {
+            sort: newSort,
+            page: 1,
+            count: count,
+        }
 
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
+        setSort(paramsQuery.sort)
+        setPage(1) // при сортировке сбрасывать на 1 страницу
 
-        // sendQuery(
-        // setSearchParams(
-
-        //
+        sendQuery(paramsQuery)
+        setSearchParams(params => {
+            params.set("sort", paramsQuery.sort);
+            params.set("page", paramsQuery.page.toString());
+            params.set("count", paramsQuery.count.toString());
+            return params;
+        })
     }
 
     useEffect(() => {
@@ -107,7 +130,9 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                {idLoading && <div id={'hw15-loading'} className={s.loading}>
+                    <img src={loading}/>
+                </div>}
 
                 <SuperPagination
                     page={page}
